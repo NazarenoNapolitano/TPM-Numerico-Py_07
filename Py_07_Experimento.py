@@ -34,3 +34,24 @@ def tiempos_experimentales(tiempos, alturas, h0):
         resultados[nombre] = t
 
     return resultados
+
+def tiempo_vaciado(tf, porcentaje_vaciado):
+    fraccion_restante = 1 - porcentaje_vaciado
+    return tf * (1 - np.sqrt(fraccion_restante))
+
+
+def tiempos_teoricos(tf):
+    porcentajes = {
+        "10%": 0.10,
+        "25%": 0.25,
+        "50%": 0.50,
+        "75%": 0.75,
+        "90%": 0.90
+    }
+
+    resultados = {}
+
+    for nombre, p in porcentajes.items():
+        resultados[nombre] = tiempo_vaciado(tf, p)
+
+    return resultados

@@ -1,4 +1,4 @@
-from Py_07_Experimento import tiempos_experimentales
+from Py_07_Experimento import tiempos_experimentales, tiempos_teoricos
 
 h0 = 4.80
 
@@ -9,3 +9,11 @@ res = tiempos_experimentales(tiempos, alturas, h0)
 
 for k, v in res.items():
     print(k, "->", v)
+
+tf = 52
+
+teo = tiempos_teoricos(tf)
+
+print("\nComparación:")
+for k in res:
+    print(f"{k} -> experimental: {res[k]:.2f} s | teórico: {teo[k]:.2f} s")
