@@ -1,0 +1,7 @@
+Se calcularon los tiempos de vaciado para distintos porcentajes utilizando tanto el modelo teórico como los datos experimentales.
+
+Los valores teóricos se obtuvieron a partir de la ecuación del modelo, mientras que los valores experimentales se calcularon mediante interpolación lineal sobre los datos medidos.
+
+Al comparar ambos resultados, se observa que el modelo teórico sobreestima los tiempos de vaciado en todos los casos analizados. Esta discrepancia puede atribuirse a que el modelo supone condiciones ideales, mientras que en el experimento intervienen factores como la viscosidad del fluido, posibles turbulencias en el flujo y errores en la medición de alturas y tiempos.
+
+En particular, se observa que la diferencia entre los valores teóricos y experimentales aumenta a medida que el porcentaje de vaciado es mayor, lo cual indica que el modelo no describe con precisión el comportamiento del sistema en etapas avanzadas del vaciado.
