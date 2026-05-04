@@ -55,3 +55,6 @@ def tiempos_teoricos(tf):
         resultados[nombre] = tiempo_vaciado(tf, p)
 
     return resultados
+
+def inp_main():
+    print("interpolación")
