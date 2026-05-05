@@ -56,5 +56,21 @@ def tiempos_teoricos(tf):
 
     return resultados
 
+import Py_07_Modulo_Constantes as mc
+
 def inp_main():
-    print("interpolación")
+    print("=== INTERPOLACIÓN ===")
+
+    print("\nJUGO:")
+    exp = tiempos_experimentales(mc.T_JUGO, mc.H_JUGO, mc.H0)
+    teo = tiempos_teoricos(mc.TF_TEORICO)
+
+    for k in exp:
+        print(f"{k} -> experimental: {exp[k]:.2f} s | teórico: {teo[k]:.2f} s")
+
+    print("\nACEITE:")
+    exp = tiempos_experimentales(mc.T_ACEITE, mc.H_ACEITE, mc.H0)
+    teo = tiempos_teoricos(mc.TF_TEORICO)
+
+    for k in exp:
+        print(f"{k} -> experimental: {exp[k]:.2f} s | teórico: {teo[k]:.2f} s")
