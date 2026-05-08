@@ -14,16 +14,22 @@ def calcular_y_graficar(t_medido, h_medido, liquido):
     y_estimado = np.where(t_medido <= mc.TF_TEORICO, y_estimado, 0)
     
     # Mediciones con error relativo < 10%
-    y_ref = (1 - t_medido / mc.TF_TEORICO)**2
-    error_rel = np.abs((y_experimental - y_ref) / np.where(y_ref == 0, 1e-10, y_ref))
+    y_teorico = (1 - t_medido / mc.TF_TEORICO)**2
+    error_abs = np.abs((y_experimental - y_teorico))
+    
+    with np.errstate(divide='ignore', invalid='ignore'):
+        error_rel = error_abs / np.abs(y_experimental)
     
     filtro_error = error_rel < 0.10
     t_mejor, y_mejor = t_medido[filtro_error], y_experimental[filtro_error]
-    
-    # Puntos mínimos para el ajuste
-    if len(t_mejor) < 4:
-        t_mejor, y_mejor = t_medido[:10], y_experimental[:10]
 
+    print(f"--- {liquido} ---")
+
+     # Puntos mínimos para el ajuste
+    print('Puntos con error relativo menor al 10%: ' + str(len(t_mejor)))
+    if len(t_mejor) < 4:
+        t_mejor, y_mejor = t_medido, y_experimental # Si no hay suficientes puntos con error relativo al 10%
+    
     # Ajustes
     # Cuadrático (línea azul)
     c_cuad = np.polyfit(t_mejor, y_mejor, 2)
@@ -39,7 +45,7 @@ def calcular_y_graficar(t_medido, h_medido, liquido):
     # Error cuadrático medio
     def ecm(y_r, y_p): return np.mean((y_r - y_p)**2)
     
-    print(f"--- {liquido} (Error Exp: {mc.E_H_EXPERIMENTAL} cm) ---")
+    
     print(f"ECM Cuadrático: {ecm(y_experimental, np.polyval(c_cuad, t_medido)):.6f}")
     print(f"ECM Cúbico:     {ecm(y_experimental, np.polyval(c_cubi, t_medido)):.6f}")
     print(f"ECM Exponencial: {ecm(y_experimental, np.exp(np.polyval(c_expo, t_medido))):.6f}\n")
