@@ -1,15 +1,15 @@
 import numpy as np
 
 # Constantes calculadas
-H0 = 4.8
-E_H0 = 0.1
-D1 = 8.0
-E_D1 = 0.1
+H0 = 4.80
+E_H0 = 0.05
+D1 = 8.00
+E_D1 = 0.05
 D2 = 0.60
-E_D2 = 0.01
+E_D2 = 0.05
 
-TF_TEORICO = 17.6  #(D1 = 8, D2 = 0.6, h0 = 4.8)
-E_TF_TEORICO = 0.8
+TF_TEORICO = 18  #(D1 = 8, D2 = 0.6, h0 = 4.8)  Tiempo tf obtenido con ecuación 2.
+E_TF_TEORICO = 3
 
 E_H_EXPERIMENTAL = 0.05
 
